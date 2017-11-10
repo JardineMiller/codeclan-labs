@@ -1,48 +1,52 @@
 class Pub
-	attr_reader :name, :drinks, :foods
-	attr_accessor :till
+	attr_reader :name, :foods
+	attr_accessor :till, :drinks
 
 	def initialize(name, drinks, foods)
 		@name = name
-		@drinks = drinks || []
-		@foods = foods || []
+		@drinks = drinks || {}
+		@foods = foods || {}
 		@till = 0
-		@drinks_quantity = 0
-		@food_quantity = 0
-		@stock_value = 0
 	end
 
-	def check_customer_age(customer)
-		return true if customer.age >= 18 
-		return false
-	end
-
-	def increase_money(amount)
-		@till += amount
-	end
-
-	def drinks_quantity
-		for drink in @drinks
-			@drinks_quantity += drink.quantity
+	def serve(customer, item)
+		return if has_stock?(item) == false
+		if @drinks.include?(item)
+				return if customer.is_drunk? == true
+				return if customer.is_of_age? == false
+				customer.buy_drink(item)
+				@till += item.price
+				@drinks[item] -= 1
 		end
-		return @drinks_quantity
-	end	
-
-	def food_quantity
-		for food in @foods
-			@food_quantity += food.quantity
+		if @foods.include?(item)
+			customer.buy_food(item)
+			@till += item.price
+			@foods[item] -= 1
 		end
-		return @food_quantity
+	end
+
+	def has_stock?(item)
+		if @drinks.include?(item)
+			@drinks[item] > 0
+		end
+		if @foods.include?(item)
+			@foods[item] > 0
+		end
+	end
+
+	def stock_count(item)
+		if @drinks.include?(item)
+			return @drinks[item]
+		end
+		if @foods.include?(item)
+			return @foods[item]
+		end
 	end
 
 	def stock_value
-		total = 0
-		for drink in @drinks
-			total += drink.quantity * drink.price
-		end
-		for food in @foods
-			total += food.quantity * food.price
-		end
-		return total
+		total_drinks = @drinks.reduce(0) {|sum, (item, quantity)| sum + (quantity * item.price)}
+		total_foods = @foods.reduce(0) {|sum, (item, quantity)| sum + (quantity * item.price)}
+		return total_drinks + total_foods
 	end
+
 end
