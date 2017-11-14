@@ -25,15 +25,6 @@ class Pub
 		end
 	end
 
-	def has_stock?(item)
-		if @drinks.include?(item)
-			@drinks[item] > 0
-		end
-		if @foods.include?(item)
-			@foods[item] > 0
-		end
-	end
-
 	def stock_count(item)
 		if @drinks.include?(item)
 			return @drinks[item]
