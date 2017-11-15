@@ -7,7 +7,13 @@ artist = Artist.new({
   'name' => 'Michael Jackson'
 })
 
-artist.save
+# artist.save
+#pp Artist.find_by_id(2)
+# artist.delete
+# artist.save
+
+# artist.name = "Jimmy Snaggletooth"
+# artist.update
 # pp Artist.all
 
 album_1 = Album.new({
@@ -30,10 +36,13 @@ album_3 = Album.new({
 
 
 album_1.save
+# # album_1.title = "Whatever"
+# #album_1.update
 album_2.save
 album_3.save
-# pp Album.all
+# album_2.delete
+# # pp Album.all
+pp Album.find_by_id(1)
+# pp artist.albums
 
-pp artist.albums
-
-pp album_2.artist
+# pp album_2.artist
