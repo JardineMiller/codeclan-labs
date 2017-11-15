@@ -35,9 +35,8 @@ class Artist
   def update
     sql = "
       UPDATE artists
-      SET (name) = ($1)
-      WHERE id = $2
-    "
+      SET(name) = ($1)
+      WHERE id = $2"
     values = [@name, @id]
     SqlRunner.run(sql, values)
   end
@@ -55,4 +54,10 @@ class Artist
     return Artist.new(result[0])
   end
 
+  def self.find_by_name(name)
+    sql = "SELECT * FROM artists WHERE name = $1"
+    values = [name]
+    result = SqlRunner.run(sql, values)
+    return Artist.new(result[0])
+  end
 end
