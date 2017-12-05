@@ -1,0 +1,30 @@
+<form method="post" action="/students">
+  <div class="form-group">
+    <label for="first_name">First name</label>
+    <input type="name" name="first_name" id="first_name">
+  </div>
+  
+  <div class="form-group">
+    <label for="last_name">Last name</label>
+    <input type="name" name="last_name" id="last_name">
+  </div>
+
+  <div class="form-group">
+    <label for="house_select">House Name</label>
+    <select name="house_id" id="house_select">
+      <% @houses.each do |house| %>
+        <option value ="<%= house.id %>" >
+          <%= house.name %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age">
+  </div>
+
+  <input class="btn btn__large" type="submit">
+  <a class="btn btn__large" href="/students">Cancel</a>
+</form>

@@ -1,0 +1,73 @@
+body, html {
+  font-family: 'Open Sans';
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 720px;
+  margin: auto;
+}
+.student {
+  margin-bottom: 10px;
+}
+
+.student th,
+.student td {
+  padding-right: 40px;
+}
+
+.no-pad {
+  padding-right: 0px !important;
+}
+
+.btn {
+  background-color: #ED9927;
+  color: #fff;
+  padding: 2px 5px;
+  font-size: 13px;
+  border: none;
+  border-radius: 0px;
+  box-sizing: border-box;
+}
+
+.green {
+  background-color: #1FDA1F
+}
+
+.red {
+  background-color: #E41F1D;
+}
+
+.btn__large {
+  font-size: 15px;
+  padding: 5px 10px;
+}
+
+.form-group {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  display: inline-block;
+  width: 100px;
+}
+
+.profile {
+  display: flex;
+}
+
+.profile-info > *
+ {
+  margin: 0 0 0 15px;
+  padding: 0;
+}
+
+
+.portrait {
+  margin: 0;
+}
+

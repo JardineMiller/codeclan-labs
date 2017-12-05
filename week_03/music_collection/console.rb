@@ -2,17 +2,17 @@ require_relative('models/artist.rb')
 require_relative('models/album.rb')
 require('pp')
 
-artist = Artist.find_by_name("The Cat Empire")
+# artist = Artist.find_by_name("The Cat Empire")
 
-# pp artist.albums
+# # pp artist.albums
 
-album = Album.find_by_name("Wanted on Voyage")
+# album = Album.find_by_name("Wanted on Voyage")
 
-pp album
+# pp album
 
-album.delete
+# album.delete
 
-pp Album.all
+# pp Album.all
 
 
 

@@ -69,7 +69,7 @@ class Bounty
     db.close
   end
 
-  def self.find(id)
+  def self.find_by_id(id)
     # Create connection
     db = PG.connect({dbname: 'space_cowboys', host: 'localhost'})
     # Save SQL query to a variable
@@ -78,13 +78,35 @@ class Bounty
     SELECT * FROM bounties WHERE id = $1
     "
     values = [id]
-    db.prepare("find", sql)
+    db.prepare("find_by_id", sql)
     # Execute SQL
-    result = db.exec_prepared("find", values)
+    result = db.exec_prepared("find_by_id", values)
     #  # Close our DB connection
     db.close
-    
-    return result.map { |bounty| Bounty.new(bounty) }
+
+    bounty_hash = result[0]
+    return bounty = Bounty.new(bounty_hash)
+    #.map { |bounty| Bounty.new(bounty) }
+  end
+
+  def self.find_by_name(name)
+    # Create connection
+    db = PG.connect({dbname: 'space_cowboys', host: 'localhost'})
+    # Save SQL query to a variable
+    sql = 
+    "
+    SELECT * FROM bounties WHERE name = $1
+    "
+    values = [name]
+    db.prepare("find_by_name", sql)
+    # Execute SQL
+    result = db.exec_prepared("find_by_name", values)
+    #  # Close our DB connection
+    db.close
+
+    bounty_hash = result[0]
+    return bounty = Bounty.new(bounty_hash)
+    #.map { |bounty| Bounty.new(bounty) }
   end
 
 end

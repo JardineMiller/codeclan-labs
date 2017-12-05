@@ -1,0 +1,12 @@
+<div class="profile">
+  <figure class="portrait">
+    <img src="<%= @student.portrait_url %>">
+  </figure>
+  <div class="profile-info">
+    <h1><%= @student.full_name %></h1>
+    <h3><%= @student.house.name %></h3>
+    <img src="<%= @student.house.logo_url %>" height=50 width=50>
+    <h3><%= @student.age %></h3>
+  </div>
+</div>
+<a class="btn btn__large" href="/students">Back</a>
