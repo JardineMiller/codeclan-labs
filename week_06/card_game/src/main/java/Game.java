@@ -56,6 +56,14 @@ public class Game {
         }
     }
 
+    public void play(int numberOfCardsToDeal) {
+        prepareDeck();
+        dealCard(2);
+        determineWinners();
+        printPlayers();
+        printWinners();
+    }
+
 
 
 

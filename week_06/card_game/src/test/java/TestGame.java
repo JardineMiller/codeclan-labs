@@ -38,15 +38,5 @@ public class TestGame {
         assertEquals(3, player2.handCount());
         assertEquals(46, game.deck.cardCount());
     }
-
-    @Test
-    public void testResults() {
-        game.prepareDeck();
-        game.dealCard(2);
-        game.determineWinners();
-        game.printPlayers();
-        game.printWinners();
-    }
-
-
+    
 }
