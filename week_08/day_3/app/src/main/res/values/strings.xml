@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Rock Paper Scissors</string>
+    <string name="opening_text">Chose Your Implement</string>
+    <string name="rock_button_text">Rock</string>
+    <string name="paper_button_text">Paper</string>
+    <string name="scissors_button_text">Scissors</string>
+</resources>
