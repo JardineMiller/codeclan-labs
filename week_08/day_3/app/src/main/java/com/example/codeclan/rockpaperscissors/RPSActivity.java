@@ -6,14 +6,39 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class RPSActivity extends AppCompatActivity {
 
-    Game game;
+    private Game game;
+    private ScoreCount scoreCount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rps);
+        scoreCount = new ScoreCount();
+    }
+
+    public void showResults() {
+        TextView playerSelect = findViewById(R.id.player_select);
+        String playerSelectText = "You chose:\n" + game.getPlayerMove();
+        playerSelect.setText(playerSelectText);
+
+        TextView computerSelect = findViewById(R.id.computer_select);
+        String compSelectText = "Computer chose:\n" + game.getComputerMove();
+        computerSelect.setText(compSelectText);
+
+        TextView resultText = findViewById(R.id.result_text);
+        String resultString = "YOU " + game.getResult().toUpperCase();
+        resultText.setText(resultString);
+        scoreCount.increaseScore(game.getResult());
+
+        TextView playerScore = findViewById(R.id.player_score);
+        TextView computerScore = findViewById(R.id.computer_score);
+        playerScore.setText(scoreCount.getPlayerScore());
+        computerScore.setText(scoreCount.getComputerScore());
     }
 
     public void onRockButtonClick(View button) {
@@ -21,17 +46,7 @@ public class RPSActivity extends AppCompatActivity {
         String rock = getResources().getResourceEntryName(rockButton.getId());
         game = new Game(rock);
 
-        TextView playerSelect = findViewById(R.id.player_select);
-        String playerSelectText = "You chose:\n" + game.getPlayerMove();
-        playerSelect.setText(playerSelectText);
-
-        TextView computerSelect = findViewById(R.id.computer_select);
-        String compSelectText = "Computer chose:\n" + game.getComputerMove();
-        computerSelect.setText(compSelectText);
-
-        TextView resultText = findViewById(R.id.result_text);
-        String resultString = "YOU " + game.getResult().toUpperCase();
-        resultText.setText(resultString);
+        showResults();
     }
 
     public void onPaperButtonClick(View button) {
@@ -39,17 +54,7 @@ public class RPSActivity extends AppCompatActivity {
         String paper = getResources().getResourceEntryName(paperButton.getId());
         game = new Game(paper);
 
-        TextView playerSelect = findViewById(R.id.player_select);
-        String playerSelectText = "You chose:\n" + game.getPlayerMove();
-        playerSelect.setText(playerSelectText);
-
-        TextView computerSelect = findViewById(R.id.computer_select);
-        String compSelectText = "Computer chose:\n" + game.getComputerMove();
-        computerSelect.setText(compSelectText);
-
-        TextView resultText = findViewById(R.id.result_text);
-        String resultString = "YOU " + game.getResult().toUpperCase();
-        resultText.setText(resultString);
+        showResults();
     }
 
     public void onScissorsButtonClick(View button) {
@@ -57,16 +62,6 @@ public class RPSActivity extends AppCompatActivity {
         String scissors = getResources().getResourceEntryName(scissorsButton.getId());
         game = new Game(scissors);
 
-        TextView playerSelect = findViewById(R.id.player_select);
-        String playerSelectText = "You chose:\n" + game.getPlayerMove();
-        playerSelect.setText(playerSelectText);
-
-        TextView computerSelect = findViewById(R.id.computer_select);
-        String compSelectText = "Computer chose:\n" + game.getComputerMove();
-        computerSelect.setText(compSelectText);
-
-        TextView resultText = findViewById(R.id.result_text);
-        String resultString = "YOU " + game.getResult().toUpperCase();
-        resultText.setText(resultString);
+        showResults();
     }
 }
