@@ -28,14 +28,22 @@ var arrayTasks = {
 	},
 
 	removeAndClone: function (arr, valueToRemove) {
-		return arr.filter( i => i !== valueToRemove);
+		return arr.filter( element => element !== valueToRemove);
 	},
 
 	findIndexesOf: function (arr, itemToFind) {
-		let indexes = [], i = -1;
-		while((i = arr.indexOf(itemToFind, i + 1)) !== -1){
-			indexes.push(i)
-		}
+		// let indexes = [], i = -1;
+		// while((i = arr.indexOf(itemToFind, i + 1)) !== -1){
+		// 	indexes.push(i)
+		// }
+		// return indexes;
+
+		let indexes = [];
+		arr.forEach(function(num, index) {
+				if(num === itemToFind) {
+					indexes.push(index);
+				}
+		})
 		return indexes;
 
 		// return arr.map(function(item, index) {
@@ -47,10 +55,16 @@ var arrayTasks = {
 
 	},
 
-	sumOfAllEvenNumbersSquared: function (arr) {
-			return arr
-							.filter( item => !(item % 2))
-							.reduce((current, next) => (current * current) + (next * next));
+		sumOfAllEvenNumbersSquared: function (arr) {
+			// return arr
+			// 				.filter( item => !(item % 2))
+			// 				.reduce((current, next) => (current * ) + (next * next));
+			
+			return arr.filter(function(item) {
+				return !(item % 2);
+			}).reduce(function(total, next) {
+				return total + (next * next);
+			}, 0)
 	}
 
 }
